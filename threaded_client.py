@@ -1,7 +1,7 @@
 import socket, threading
 
 DEST_IP = socket.gethostbyname(socket.gethostname())
-DEST_PORT = 49153
+DEST_PORT = 49156
 ENCODER = 'utf-8'
 BYTESIZE = 1024
 
@@ -52,12 +52,9 @@ rec_thread = threading.Thread(target=receive_message)
 
 send_thread = threading.Thread(target=send_message)
 
-
 #Start the thread
 
 rec_thread.start()
-
-
                 
 send_thread.start()
 

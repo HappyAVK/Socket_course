@@ -2,7 +2,7 @@ import socket, threading
 
 HOST_IP = socket.gethostbyname(socket.gethostname())
 
-HOST_PORT = 49153
+HOST_PORT = 49156
 
 ENCODER = 'utf-8'
 
@@ -31,10 +31,10 @@ pass
 
 def receive_message(client_socket):
     '''Receive an incoming message from a specific client and forward the message to be broadcast'''
-    index = client_socket_list.index(client_socket)
-    name = client_name_list[index]
+    
     while True:
-        
+        index = client_socket_list.index(client_socket)
+        name = client_name_list[index]
         try:
             # get name of given client from list
             
@@ -89,7 +89,6 @@ def connect_client():
 
         client_socket_list.append(client_socket)
 
-
         #update the server, induvidual client, and all clients
 
         print(f"Name of new client is {client_name}\n")
@@ -105,7 +104,5 @@ def connect_client():
         receive_thread = threading.Thread(target=receive_message, args=(client_socket,))
 
         receive_thread.start()
-
-        
 
 connect_client()
